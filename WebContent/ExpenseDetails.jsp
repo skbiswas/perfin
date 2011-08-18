@@ -42,19 +42,33 @@
 		if (lastRow > 2)
 			tbl.deleteRow(lastRow - 1);
 	}
+	/* ~~~~~~~~~~~~~~~Category Selection ~~~~~~~~~~~~~~~~~~~ */
+
+	selectedCategory = null;
+	function selectCategory(category){		
+		if(selectedCategory != null){
+			category.value = selectedCategory;
+		} else{
+			alert("No category selected! Please select a category from the right hand side table first.");
+		}
+	}
+	function markCategory(radio){
+		selectedCategory = radio.value;
+	}
+	/* ~~~~~~~~~~~~~~~Category Selection ~~~~~~~~~~~~~~~~~~~ */
 </script>
 <style type="text/css">
-	#tab_hdr {background: #196E1B; border-left:solid #81F277; border-top:solid #81F277;border-bottom:solid #81F277; font-family:arial; font-weight:bold; color:#FAFCFA; font-size: 14px}
-	#tab_body {border-left:solid #81F277;border-top:solid #81F277;border-bottom:solid #81F277; font-family:arial; font-size: 12px}
+	#tab_hdr {background: #196E1B; border-left:solid #CAEBCA; border-top:solid #CAEBCA;border-bottom:solid #CAEBCA; font-family:arial; font-weight:bold; color:#FAFCFA; font-size: 14px}
+	#tab_body {border-left:solid #CAEBCA;border-top:solid #CAEBCA;border-bottom:solid #CAEBCA; font-family:arial; font-size: 12px}
 </style>
 </head>
 
 <body>
 <form name="expense" action="/perfin/fincontroller" method="post">
-	<table align="center" border="0" width="100%" cellpadding="0" cellspacing="1" bgcolor=#81F277>
+	<table align="center" border="0" width="100%" cellpadding="0" cellspacing="1" bgcolor=#CAEBCA>
 	<tr>
 		<td>
-			<table id="tablInvestment" align="center" border="1" width="80%" cellpadding="0" cellspacing="1" bgcolor=#81F277>
+			<table id="tablInvestment" align="center" border="1" width="80%" cellpadding="0" cellspacing="1" bgcolor=#CAEBCA>
 				<caption style="background: #B0B019; font-weight:bold; font-family:arial; color:#FAFCFA">Fixed Expenses</caption>
 				<tr align="center" valign="middle">
 						<td id="tab_hdr"><img src="calendar_icon.jpg" alt="pick a date" width="35" height="35"></td>
@@ -67,183 +81,84 @@
 				<tr id="tab_body" valign="middle" align="center">
 					<td><input type="date" name="f_exp_dt1"></td>
 					<td><input name="f_exp_ds1" value="House Rent" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Kitchen Expenses</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
+					<td><input name="f_exp_cat1" value=""  onclick="selectCategory(this)" /></td>
 					<td><input type="text" name="f_exp_am1" size="20"></td>
 					<td><input type="text" name="f_exp_re1" size="40"></td>
 				</tr>
 				<tr valign="middle" align="center">
 					<td><input type="date" name="f_exp_dt1"></td>
-					<td><input name="f_exp_ds1" value="House Maintenance" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Maid</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
-					<td><input type="text" name="f_exp_am1" size="20"></td>
-					<td><input type="text" name="f_exp_re1" size="40"></td>
+					<td><input name="f_exp_ds2" value="House Maintenance" size="40"></td>
+					<td><input name="f_exp_cat2" value=""  onclick="selectCategory(this)" /></td>					
+					<td><input type="text" name="f_exp_am2" size="20"></td>
+					<td><input type="text" name="f_exp_re2" size="40"></td>
 				</tr>
 				<tr valign="middle" align="center">
 					<td><input type="date" name="f_exp_dt1"></td>
-					<td><input name="f_exp_ds1" value="Dish TV" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Maid</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
-					<td><input type="text" name="f_exp_am1" size="20"></td>
-					<td><input type="text" name="f_exp_re1" size="40"></td>
+					<td><input name="f_exp_ds3" value="Dish TV" size="40"></td>
+					<td><input name="f_exp_cat3" value=""  onclick="selectCategory(this)" /></td>
+					<td><input type="text" name="f_exp_am3" size="20"></td>
+					<td><input type="text" name="f_exp_re3" size="40"></td>
 				</tr>
 				<tr valign="middle" align="center">
 					<td><input type="date" name="f_exp_dt1"></td>
 					<td><input name="f_exp_ds1" value="Maid" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Maid</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
+					<td><input name="f_exp_cat4" value=""  onclick="selectCategory(this)" /></td>
 					<td><input type="text" name="f_exp_am1" size="20"></td>
 					<td><input type="text" name="f_exp_re1" size="40"></td>
 				</tr>
 				<tr valign="middle" align="center">
-					<td><input type="date" name="f_exp_dt1"></td>
-					<td><input name="f_exp_ds1" value="Milk" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Maid</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
-					<td><input type="text" name="f_exp_am1" size="20"></td>
-					<td><input type="text" name="f_exp_re1" size="40"></td>
+					<td><input type="date" name="f_exp_dt5"></td>
+					<td><input name="f_exp_ds5" value="Milk" size="40"></td>
+					<td><input name="f_exp_cat5" value=""  onclick="selectCategory(this)" /></td>
+					<td><input type="text" name="f_exp_am5" size="20"></td>
+					<td><input type="text" name="f_exp_re5" size="40"></td>
 				</tr>
 				<tr valign="middle" align="center">
-					<td><input type="date" name="f_exp_dt1"></td>
-					<td><input name="f_exp_ds1" value="Gas" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Maid</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
-					<td><input type="text" name="f_exp_am1" size="20"></td>
-					<td><input type="text" name="f_exp_re1" size="40"></td>
+					<td><input type="date" name="f_exp_dt6"></td>
+					<td><input name="f_exp_ds6" value="Gas" size="40"></td>
+					<td><input name="f_exp_cat6" value=""  onclick="selectCategory(this)" /></td>
+					<td><input type="text" name="f_exp_am6" size="20"></td>
+					<td><input type="text" name="f_exp_re6" size="40"></td>
 				</tr>
 				<tr valign="middle" align="center">
-					<td><input type="date" name="f_exp_dt1"></td>
-					<td><input name="f_exp_ds1" value="News Paper" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Maid</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
-					<td><input type="text" name="f_exp_am1" size="20"></td>
-					<td><input type="text" name="f_exp_re1" size="40"></td>
+					<td><input type="date" name="f_exp_dt7"></td>
+					<td><input name="f_exp_ds7" value="News Paper" size="40"></td>
+					<td><input name="f_exp_cat7" value=""  onclick="selectCategory(this)" /></td>
+					<td><input type="text" name="f_exp_am7" size="20"></td>
+					<td><input type="text" name="f_exp_re7" size="40"></td>
 				</tr>
 				<tr valign="middle" align="center">
-					<td><input type="date" name="f_exp_dt1"></td>
-					<td><input name="f_exp_ds1" value="Electricity Bill" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Maid</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
-					<td><input type="text" name="f_exp_am1" size="20"></td>
-					<td><input type="text" name="f_exp_re1" size="40"></td>
+					<td><input type="date" name="f_exp_dt8"></td>
+					<td><input name="f_exp_ds8" value="Electricity Bill" size="40"></td>
+					<td><input name="f_exp_cat8" value=""  onclick="selectCategory(this)" /></td>
+					<td><input type="text" name="f_exp_am8" size="20"></td>
+					<td><input type="text" name="f_exp_re8" size="40"></td>
 				</tr>
 				<tr valign="middle" align="center">
-					<td><input type="date" name="f_exp_dt1"></td>
-					<td><input name="f_exp_ds1" value="BSNL" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Maid</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
-					<td><input type="text" name="f_exp_am1" size="20"></td>
-					<td><input type="text" name="f_exp_re1" size="40"></td>
+					<td><input type="date" name="f_exp_dt9"></td>
+					<td><input name="f_exp_ds9" value="BSNL" size="40"></td>
+					<td><input name="f_exp_cat9" value=""  onclick="selectCategory(this)" /></td>
+					<td><input type="text" name="f_exp_am9" size="20"></td>
+					<td><input type="text" name="f_exp_re9" size="40"></td>
 				</tr>
 				<tr valign="middle" align="center">
-					<td><input type="date" name="f_exp_dt1"></td>
-					<td><input name="f_exp_ds1" value="Airtel" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Maid</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
-					<td><input type="text" name="f_exp_am1" size="20"></td>
-					<td><input type="text" name="f_exp_re1" size="40"></td>
+					<td><input type="date" name="f_exp_dt10"></td>
+					<td><input name="f_exp_ds10" value="Airtel" size="40"></td>
+					<td><input name="f_exp_cat10" value=""  onclick="selectCategory(this)" /></td>
+					<td><input type="text" name="f_exp_am10" size="20"></td>
+					<td><input type="text" name="f_exp_re10" size="40"></td>
 				</tr>
 				<tr valign="middle" align="center">
-					<td><input type="date" name="f_exp_dt1"></td>
-					<td><input name="f_exp_ds1" value="Tata Docomo" size="40"></td>
-					<td>
-						<select name="fx_select1">
-							<optgroup label="Fixed Expenses">
-							<option value="rent_maintenance">Rent & Maintenance</option>
-							<option value="utility_bills">Utility Bills</option>
-							<option value="Maid">Maid</option>
-							<option value="Maid">Household Expenses</option>
-							</optgroup>
-						</select>
-					</td>
-					<td><input type="text" name="f_exp_am1" size="20"></td>
-					<td><input type="text" name="f_exp_re1" size="40"></td>
+					<td><input type="date" name="f_exp_dt11"></td>
+					<td><input name="f_exp_ds11" value="Tata Docomo" size="40"></td>
+					<td><input name="f_exp_cat11" value=""  onclick="selectCategory(this)" /></td>
+					<td><input type="text" name="f_exp_am11" size="20"></td>
+					<td><input type="text" name="f_exp_re11" size="40"></td>
 				</tr>
 
 				<tr>
 					<td colspan="4" align="right" style="background: #B0B019; font-weight:bold; font-family:arial; color:#FAFCFA"><b>Fixed Expenses</b></td>
-					<td>12340</td>
+					<td><%=fixedExp%></td>
 				</tr>
 			</table>			
 		</td>
@@ -254,99 +169,99 @@
 					<td id="tab_hdr">Category</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="Rent"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Rent & Maintenance" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Rent & Maintenance</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="Kitchen Expenses"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Kitchen Expenses" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Kitchen Expenses</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="Utility Bills"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Utility Bills" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Utility Bills</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="Commutation"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Commutation" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Commutation</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="Entertainment"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Entertainment" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Entertainment</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="household"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Household Expenses" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Household Expenses</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="grocery"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Grocery" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Grocery</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="vegetables"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Vegetabls" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Vegetabls</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="fruits"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Fruits" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Fruits</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="snacks"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Snacks" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Snacks</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="other_food"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Other Food Items" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Other Food Items</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="dine_out"></td>
-					<td id="tab_body">Dine Out</td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Dining" onclick="javascript:markCategory(this);"></td>
+					<td id="tab_body">Dining</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="medicine"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Medicine" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Medicine</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="doctor"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Doctor Consultation" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Doctor Consultation</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="commutation"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Commutation" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Commutation</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="travelling"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Travelling" onclick="javascript:markCategory(this);"></td>
 					<td id="tab_body">Travelling</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="fuel"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Fuel" onclick="javascript:markCategory(this);" /></td>
 					<td id="tab_body">Fuel</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="v_maintainance"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Vehicle Maintenance" onclick="javascript:markCategory(this);" /></td>
 					<td id="tab_body">Vehicle Maintenance</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="investments"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Investments" onclick="javascript:markCategory(this);" /></td>
 					<td id="tab_body">Investments</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="recievables"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Recievables" onclick="javascript:markCategory(this);" /></td>
 					<td id="tab_body">Recievables</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="clothing"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Clothing" onclick="javascript:markCategory(this);" /></td>
 					<td id="tab_body">Clothing</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="gifts"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Gifts" onclick="javascript:markCategory(this);" /></td>
 					<td id="tab_body">Gifts</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="stationary"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Stationary Items" onclick="javascript:markCategory(this);" /></td>
 					<td id="tab_body">Stationary Items</td>
 				</tr>
 				<tr>
-					<td><INPUT TYPE="radio" NAME="cat1" value="misc"></td>
+					<td><INPUT TYPE="radio" NAME="x_cat" value="Miscellenious" onclick="javascript:markCategory(this);" /></td>
 					<td id="tab_body">Miscellenious</td>
 				</tr>
 			</table>
