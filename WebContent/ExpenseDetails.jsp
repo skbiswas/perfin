@@ -6,7 +6,7 @@
 <title>Expense</title>
 <script type="text/javascript">
 	function addRowToTable() {
-		var tbl = document.getElementById('tblInvsestment');
+		var tbl = document.getElementById('tblVExpense');
 		var lastRow = tbl.rows.length;
 		// if there's no header row in the table, then iteration = lastRow + 1
 		var iteration = lastRow;
@@ -25,7 +25,7 @@
 		el.id = 'txtRow' + iteration;
 		el.size = 40;
 
-		el.onkeypress = keyPressTest;
+		//el.onkeypress = keyPressTest;
 		cellRight.appendChild(el);
 
 		// select cell
@@ -37,7 +37,7 @@
 		cellRightSel.appendChild(sel);
 	}
 	function removeRowFromTable() {
-		var tbl = document.getElementById('tblInvsestment');
+		var tbl = document.getElementById('tblVExpense');
 		var lastRow = tbl.rows.length;
 		if (lastRow > 2)
 			tbl.deleteRow(lastRow - 1);
@@ -68,7 +68,7 @@
 	<table align="center" border="0" width="100%" cellpadding="0" cellspacing="1" bgcolor=#CAEBCA>
 	<tr>
 		<td>
-			<table id="tablInvestment" align="center" border="1" width="80%" cellpadding="0" cellspacing="1" bgcolor=#CAEBCA>
+			<table id="tblExpense" align="center" border="1" width="80%" cellpadding="0" cellspacing="1" bgcolor=#CAEBCA>
 				<caption style="background: #B0B019; font-weight:bold; font-family:arial; color:#FAFCFA">Fixed Expenses</caption>
 				<tr align="center" valign="middle">
 						<td id="tab_hdr"><img src="calendar_icon.jpg" alt="pick a date" width="35" height="35"></td>
@@ -162,7 +162,7 @@
 				</tr>
 			</table>			
 		</td>
-		<td>
+		<td rowspan="2">
 			<table id="tblCategories" align="center" border="1" width="100%" cellpadding="0" cellspacing="1" bgcolor=#81F277>
 				<tr align="center">
 					<td>&nbsp;</td>
@@ -267,6 +267,33 @@
 			</table>
 		</td>
 		</tr>
+		<tr>
+			<td>
+				<table id="tblVExpense" align="center" border="1" width="80%" cellpadding="0" cellspacing="1" bgcolor=#CAEBCA>
+					<caption style="background: #B0B019; font-weight:bold; font-family:arial; color:#FAFCFA">Variable Expenses</caption>
+					<tr align="center" valign="middle">
+						<td id="tab_hdr"><img src="calendar_icon.jpg" alt="pick a date" width="35" height="35"></td>
+						<td id="tab_hdr">Description</td>
+						<td id="tab_hdr">Category</td>
+						<td id="tab_hdr">Amount</td>
+						<td id="tab_hdr">Recipient</td>
+					</tr>
+				
+					<tr id="tab_body" valign="middle" align="center">
+						<td><input type="date" name="v_exp_dt1"></td>
+						<td><input type="text" name="v_exp_ds1" value="" size="40"></td>
+						<td><input name="v_exp_cat1" value=""  onclick="selectCategory(this)" /></td>
+						<td><input type="text" name="v_exp_am1" size="20"></td>
+						<td><input type="text" name="v_exp_re1" size="40"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<p>
+		<input type="button" value="Add" onclick="addRowToTable()" /> 
+		<input type="button" value="Remove" onclick="removeRowFromTable();" />
+	</p>
 </form>
 </body>
 
